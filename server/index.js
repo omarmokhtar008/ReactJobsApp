@@ -3,7 +3,10 @@ const jobData = require('./jobs.json'); // Assuming your JSON data is stored in 
 
 const app = express();
 
-app.use("/" , (req, res) => { res.send(res.json(jobData))});
+// Middleware to respond with JSON data at the root path
+app.use("/", (req, res) => {
+    res.json(jobData);
+});
 
 // Define route to serve job data
 app.get('/api/jobs', (req, res) => {
