@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "babel src -d dist",
     "start": "nodemon index.js",
-    "dev": "tsc -w & nodemon ."
+    "dev": "babel src --out-dir dist --watch & nodemon dist/index.js"
   },
   "keywords": [],
   "author": "",
