@@ -8,17 +8,19 @@ const JobListings = ( { isHome = false}) => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = isHome ? "/api/jobs?_limit=3" : "http://localhost:5000/api/jobs"
+      const apiUrl = "https://react-jobs-app-xi.vercel.app";
       try {
         const res = await fetch(apiUrl);
         const data = await res.json();
-        setJobs(data);
+        setJobs(isHome ? data.jobs.slice(0, 3) : data.jobs);  
       } catch (error) {
         console.log("Error fetching data", error);
       } finally {
         setLoading(false);
+        
       }
     }
+
 
     fetchJobs();
   }, [])

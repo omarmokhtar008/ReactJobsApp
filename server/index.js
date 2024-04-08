@@ -1,16 +1,21 @@
 const express = require('express');
-const jobData = require('./jobs.json'); // Assuming your JSON data is stored in a file called 'jobs.json'
+const cors = require('cors');
+const jobData = require('./jobs.json');
 
 const app = express();
+
+app.use(cors());
 
 // Middleware to respond with JSON data at the root path
 app.use("/", (req, res) => {
     res.json(jobData);
 });
 
-// Define route to serve job data
+// Define route to serve job data with optional limit
 app.get('/api/jobs', (req, res) => {
-    res.json(jobData); // Send the JSON data as the response 
+    let limit = req.query._limit; // Extract the _limit query parameter
+    let limitedData = jobData.slice(0, limit); // Apply the limit to the data
+    res.json(limitedData); // Send the limited JSON data as the response 
 });
 
 const port = process.env.PORT || 5000;
