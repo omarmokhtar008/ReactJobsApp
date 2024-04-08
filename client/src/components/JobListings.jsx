@@ -8,17 +8,29 @@ const JobListings = ( { isHome = false}) => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const apiUrl = "https://react-jobs-app-xi.vercel.app";
-      try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        setJobs(isHome ? data.jobs.slice(0, 3) : data.jobs);  
-      } catch (error) {
-        console.log("Error fetching data", error);
-      } finally {
-        setLoading(false);
+      // const apiUrl = "https://react-jobs-app-xi.vercel.app/";
+      // try {
+      //   const res = await fetch(apiUrl);
+      //   const data = await res.json();
+      //   setJobs(isHome ? data.jobs.slice(0, 3) : data.jobs);  
+      // } catch (error) {
+      //   console.log("Error fetching data", error);
+      // } finally {
+      //   setLoading(false);
         
-      }
+      // }
+      
+      fetch('https://react-jobs-app-xi.vercel.app/')
+        .then(response => response.json())
+        .then(data => {
+        setJobs(isHome ? data.jobs.slice(0, 3) : data.jobs)
+      })
+        .catch(error => {
+        console.error('Error fetching data:', error);
+      }).finally(() => {
+        setLoading(false)
+  });
+
     }
 
 
