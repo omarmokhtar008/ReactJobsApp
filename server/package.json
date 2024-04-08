@@ -1,23 +1,17 @@
 {
-  "name": "expressjsreactjobssiteapi",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "build": "babel src -d dist",
-    "start": "nodemon index.js",
-    "dev": "babel src --out-dir dist --watch & nodemon dist/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.12.3",
+    "express": "^4.19.2",
     "nodemon": "^3.1.0"
   }
 }
